@@ -1,0 +1,8 @@
+.player_body{
+    display: flex;
+    flex-direction: row;
+}
+.player_body{
+    display: flex;
+    flex-grow: 1;
+}
