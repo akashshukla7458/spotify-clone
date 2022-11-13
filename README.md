@@ -1,3 +1,9 @@
+# Working video of Spotify-clone
+
+https://user-images.githubusercontent.com/85392276/201197646-84aedaab-5cec-4898-befb-fd8e505a78a4.mp4
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -5,6 +11,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
+
+
 
 ### `npm start`
 
