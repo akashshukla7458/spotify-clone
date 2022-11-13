@@ -17,7 +17,7 @@ function Footer({ spotify }) {
     const [{ token, item, playing }, dispatch] = useDataLayerValue();
     // useEffect(() => {
     //     spotify.getMyCurrentPlaybackState().then((r) => {
-
+    //         console.log(r);
     //         dispatch({
     //             type: "SET_PLAYING",
     //             playing: r.playing,

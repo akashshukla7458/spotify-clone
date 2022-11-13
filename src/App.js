@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import './App.css';
 import Login from "./Login";
@@ -7,10 +7,10 @@ import { getTokenFromResponse } from './Spotify';
 import { useDataLayerValue } from './DataLayer';
 
 
-const spotify = new SpotifyWebApi()
+const s = new SpotifyWebApi()
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue()
+  const [{token }, dispatch] = useDataLayerValue()
 
   useEffect(() => {
     const hash = getTokenFromResponse();
@@ -18,21 +18,22 @@ function App() {
     const _token = hash.access_token
 
     if (_token) {
+      // setToken(_token)
+      s.setAccessToken(_token)
+
       dispatch({
         type: "SET_TOKEN",
         token: _token,
       });
-      // setToken(_token)
-      spotify.setAccessToken(_token)
 
-      spotify.getMe().then((user) => {
+      s.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
           user: user,
         })
       })
 
-      spotify.getUserPlaylists().then((playlists) => {
+      s.getUserPlaylists().then((playlists) => {
         dispatch({
           type: "SET_PLAYLISTS",
           playlists: playlists,
@@ -40,7 +41,7 @@ function App() {
         })
       })
 
-      spotify.getMyTopArtists().then((response) =>
+      s.getMyTopArtists().then((response) =>
         dispatch({
           type: "SET_TOP_ARTISTS",
           top_artists: response,
@@ -50,10 +51,10 @@ function App() {
       
       dispatch({
         type: "SET_SPOTIFY",
-        spotify: spotify,
+        spotify: s,
       });
 
-      spotify.getPlaylist("3VXReCeetN58c1clj9u8ZK").then((response) =>
+      s.getPlaylist("3VXReCeetN58c1clj9u8ZK").then((response) =>
         dispatch({
           type: "SET_DISCOVER_WEEKLY",
           discover_weekly: response,
@@ -72,7 +73,7 @@ function App() {
             <Login />
           )
         }
-          {token && <Player spotify={spotify} />}
+          {token && <Player spotify={s} />}
 
       </div>
     </>
