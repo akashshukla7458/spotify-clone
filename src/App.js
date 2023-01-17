@@ -36,7 +36,7 @@ function App() {
       s.getUserPlaylists().then((playlists) => {
         dispatch({
           type: "SET_PLAYLISTS",
-          playlists: playlists,
+           playlists,
 
         })
       })
@@ -68,7 +68,7 @@ function App() {
       <div className="App">
         {
           token ? (
-            <Player />
+            <Player spotify={s} />
           ) : (
             <Login />
           )

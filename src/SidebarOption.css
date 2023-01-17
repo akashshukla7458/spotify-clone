@@ -12,8 +12,9 @@
 }
 
 .sidebar>hr {
-    border: 1px solid #282828;
+    border: 0.5px solid #030101;
     width: 90%;
+    outline: none;
     margin: 10px auto;
 }
 
